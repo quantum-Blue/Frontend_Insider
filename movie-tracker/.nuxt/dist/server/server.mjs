@@ -1,0 +1,1 @@
+export { default } from "file:///C:/Users/muham/Desktop/Frontend_insider/movie-tracker/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"

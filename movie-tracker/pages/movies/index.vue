@@ -1,0 +1,250 @@
+<template>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Page Header -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Movies
+      </h1>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        Discover the latest movies, trending films, and timeless classics. Find your next favorite movie to watch.
+      </p>
+    </div>
+
+    <!-- Movie Categories Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <!-- Popular Movies -->
+      <NuxtLink 
+        to="/movies/popular"
+        class="group bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl p-6 text-white hover:from-blue-600 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+      >
+        <div class="flex items-center justify-between mb-4">
+          <div class="p-3 bg-white/20 rounded-lg">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+          </div>
+          <span class="text-3xl font-bold opacity-20">01</span>
+        </div>
+        <h3 class="text-xl font-bold mb-2 group-hover:text-blue-100 transition-colors">Popular</h3>
+        <p class="text-blue-100 text-sm">Most popular movies right now</p>
+        <div class="mt-4 flex items-center text-sm">
+          <span>Explore</span>
+          <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </NuxtLink>
+
+      <!-- Now Playing -->
+      <NuxtLink 
+        to="/movies/now-playing"
+        class="group bg-gradient-to-br from-green-500 to-green-700 rounded-xl p-6 text-white hover:from-green-600 hover:to-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+      >
+        <div class="flex items-center justify-between mb-4">
+          <div class="p-3 bg-white/20 rounded-lg">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M19 10a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <span class="text-3xl font-bold opacity-20">02</span>
+        </div>
+        <h3 class="text-xl font-bold mb-2 group-hover:text-green-100 transition-colors">Now Playing</h3>
+        <p class="text-green-100 text-sm">Movies currently in theaters</p>
+        <div class="mt-4 flex items-center text-sm">
+          <span>Explore</span>
+          <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </NuxtLink>
+
+      <!-- Upcoming -->
+      <NuxtLink 
+        to="/movies/upcoming"
+        class="group bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl p-6 text-white hover:from-purple-600 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+      >
+        <div class="flex items-center justify-between mb-4">
+          <div class="p-3 bg-white/20 rounded-lg">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <span class="text-3xl font-bold opacity-20">03</span>
+        </div>
+        <h3 class="text-xl font-bold mb-2 group-hover:text-purple-100 transition-colors">Upcoming</h3>
+        <p class="text-purple-100 text-sm">Movies coming to theaters soon</p>
+        <div class="mt-4 flex items-center text-sm">
+          <span>Explore</span>
+          <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </NuxtLink>
+
+      <!-- Top Rated -->
+      <NuxtLink 
+        to="/movies/top-rated"
+        class="group bg-gradient-to-br from-orange-500 to-red-600 rounded-xl p-6 text-white hover:from-orange-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+      >
+        <div class="flex items-center justify-between mb-4">
+          <div class="p-3 bg-white/20 rounded-lg">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <span class="text-3xl font-bold opacity-20">04</span>
+        </div>
+        <h3 class="text-xl font-bold mb-2 group-hover:text-orange-100 transition-colors">Top Rated</h3>
+        <p class="text-orange-100 text-sm">Highest rated movies of all time</p>
+        <div class="mt-4 flex items-center text-sm">
+          <span>Explore</span>
+          <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </NuxtLink>
+    </div>
+
+    <!-- Featured Movies Preview -->
+    <div class="bg-gray-50 rounded-2xl p-8">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">Featured Movies</h2>
+          <p class="text-gray-600">Check out some popular movies</p>
+        </div>
+        <NuxtLink 
+          to="/movies/popular" 
+          class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+        >
+          View All
+        </NuxtLink>
+      </div>
+
+      <!-- Loading State -->
+      <div v-if="loading" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        <div v-for="i in 6" :key="i" class="animate-pulse">
+          <div class="bg-gray-300 rounded-lg aspect-[2/3] mb-3"></div>
+          <div class="h-4 bg-gray-300 rounded mb-2"></div>
+          <div class="h-3 bg-gray-300 rounded w-2/3"></div>
+        </div>
+      </div>
+
+      <!-- Movies Grid -->
+      <div v-else-if="featuredMovies.length > 0" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        <PosterCard
+          v-for="movie in featuredMovies.slice(0, 6)"
+          :key="movie.id"
+          :item="movie"
+          type="movie"
+        />
+      </div>
+
+      <!-- Error State -->
+      <div v-else class="text-center py-12">
+        <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <h3 class="text-lg font-medium text-gray-900 mb-2">Unable to load movies</h3>
+        <p class="text-gray-500 mb-4">Please try again later.</p>
+        <button
+          @click="fetchFeaturedMovies"
+          class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+        >
+          Retry
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+        <div class="flex items-center">
+          <div class="p-3 bg-blue-100 rounded-lg">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 3v12a2 2 0 002 2h8a2 2 0 002-2V7m-9 0h10m-9 0a2 2 0 00-2 2v10a2 2 0 002 2" />
+            </svg>
+          </div>
+          <div class="ml-4">
+            <p class="text-2xl font-bold text-gray-900">800K+</p>
+            <p class="text-gray-600">Movies Available</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+        <div class="flex items-center">
+          <div class="p-3 bg-green-100 rounded-lg">
+            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="ml-4">
+            <p class="text-2xl font-bold text-gray-900">Daily</p>
+            <p class="text-gray-600">Updates</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+        <div class="flex items-center">
+          <div class="p-3 bg-purple-100 rounded-lg">
+            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div class="ml-4">
+            <p class="text-2xl font-bold text-gray-900">HD Quality</p>
+            <p class="text-gray-600">Information</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+
+// SEO
+definePageMeta({
+  title: 'Movies'
+})
+
+useSeoMeta({
+  title: 'Movies - Movie Tracker',
+  ogTitle: 'Movies - Movie Tracker',
+  description: 'Discover the latest movies, trending films, and timeless classics. Find your next favorite movie to watch.',
+  ogDescription: 'Discover the latest movies, trending films, and timeless classics. Find your next favorite movie to watch.'
+})
+
+const config = useRuntimeConfig()
+
+// State
+const featuredMovies = ref([])
+const loading = ref(false)
+
+// Methods
+const fetchFeaturedMovies = async () => {
+  loading.value = true
+  try {
+    const response = await $fetch(`${config.public.tmdbBaseUrl}/movie/popular`, {
+      params: {
+        api_key: config.public.tmdbApiKey,
+        language: 'en-US',
+        page: 1
+      }
+    })
+    featuredMovies.value = response.results || []
+  } catch (error) {
+    console.error('Error fetching featured movies:', error)
+    featuredMovies.value = []
+  } finally {
+    loading.value = false
+  }
+}
+
+// Lifecycle
+onMounted(() => {
+  fetchFeaturedMovies()
+})
+</script>

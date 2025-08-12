@@ -1,0 +1,192 @@
+import { _ as __nuxt_component_0 } from './nuxt-link-CE5i-Arg.mjs';
+import { ref, computed, mergeProps, withCtx, createTextVNode, createVNode, createBlock, openBlock, createCommentVNode, toDisplayString, useSSRContext } from 'vue';
+import { ssrRenderAttrs, ssrRenderComponent, ssrInterpolate, ssrRenderAttr, ssrRenderList, ssrIncludeBooleanAttr } from 'vue/server-renderer';
+import { c as useSeoMeta, b as useRoute, d as useRouter } from './server.mjs';
+import { _ as _export_sfc } from './_plugin-vue_export-helper-1tPrXgE0.mjs';
+import '../_/nitro.mjs';
+import 'node:http';
+import 'node:https';
+import 'node:events';
+import 'node:buffer';
+import 'node:fs';
+import 'node:path';
+import 'node:crypto';
+import 'node:url';
+import '../routes/renderer.mjs';
+import 'vue-bundle-renderer/runtime';
+import 'unhead/server';
+import 'devalue';
+import 'unhead/plugins';
+import 'unhead/utils';
+import 'vue-router';
+
+const _sfc_main = {
+  __name: "people",
+  __ssrInlineRender: true,
+  setup(__props) {
+    useSeoMeta({
+      title: "Popular People - Movie Tracker",
+      ogTitle: "Popular People - Movie Tracker",
+      description: "Discover talented actors, directors, and creators in the entertainment industry.",
+      ogDescription: "Discover talented actors, directors, and creators in the entertainment industry."
+    });
+    useRoute();
+    useRouter();
+    const people2 = ref([]);
+    const loading = ref(false);
+    const error = ref(null);
+    const currentPage = ref(1);
+    const totalPages = ref(1);
+    const totalResults = ref(0);
+    const searchInput = ref("");
+    const searchQuery = ref("");
+    const hasMorePages = computed(() => currentPage.value < totalPages.value);
+    return (_ctx, _push, _parent, _attrs) => {
+      const _component_NuxtLink = __nuxt_component_0;
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" }, _attrs))} data-v-5ed1d1d1><nav class="mb-6" data-v-5ed1d1d1><ol class="flex items-center space-x-2 text-sm text-gray-500" data-v-5ed1d1d1><li data-v-5ed1d1d1>`);
+      _push(ssrRenderComponent(_component_NuxtLink, {
+        to: "/",
+        class: "hover:text-blue-600"
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`Home`);
+          } else {
+            return [
+              createTextVNode("Home")
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</li><li data-v-5ed1d1d1>/</li><li class="text-gray-900 font-medium" data-v-5ed1d1d1>People</li></ol></nav><div class="mb-8" data-v-5ed1d1d1><h1 class="text-3xl font-bold text-gray-900 mb-4" data-v-5ed1d1d1>${ssrInterpolate(searchQuery.value ? "Search Results" : "Popular People")}</h1><p class="text-gray-600 mb-6" data-v-5ed1d1d1>${ssrInterpolate(searchQuery.value ? `Search results for "${searchQuery.value}"` : "Discover talented actors, directors, and creators in the entertainment industry")}</p><div class="max-w-2xl" data-v-5ed1d1d1><div class="relative" data-v-5ed1d1d1><input${ssrRenderAttr("value", searchInput.value)} type="text" placeholder="Search for actors, directors, writers..." class="w-full px-4 py-3 pl-12 pr-20 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" data-v-5ed1d1d1><div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none" data-v-5ed1d1d1><svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-v-5ed1d1d1><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" data-v-5ed1d1d1></path></svg></div>`);
+      if (searchInput.value) {
+        _push(`<button class="absolute inset-y-0 right-16 flex items-center" data-v-5ed1d1d1><svg class="h-4 w-4 text-gray-400 hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-v-5ed1d1d1><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" data-v-5ed1d1d1></path></svg></button>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`<button class="absolute right-2 top-2 bottom-2 bg-blue-600 hover:bg-blue-700 text-white px-4 rounded-md transition-colors" data-v-5ed1d1d1> Search </button></div>`);
+      if (searchQuery.value) {
+        _push(`<button class="mt-3 text-sm text-blue-600 hover:text-blue-800" data-v-5ed1d1d1> ← Back to Popular People </button>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`</div></div>`);
+      if (loading.value && people2.value.length === 0) {
+        _push(`<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6" data-v-5ed1d1d1><!--[-->`);
+        ssrRenderList(20, (n) => {
+          _push(`<div class="animate-pulse" data-v-5ed1d1d1><div class="aspect-square bg-gray-300 rounded-full mb-4" data-v-5ed1d1d1></div><div class="h-4 bg-gray-300 rounded mb-2" data-v-5ed1d1d1></div><div class="h-3 bg-gray-300 rounded w-2/3" data-v-5ed1d1d1></div></div>`);
+        });
+        _push(`<!--]--></div>`);
+      } else if (error.value) {
+        _push(`<div class="text-center py-12" data-v-5ed1d1d1><svg class="mx-auto h-12 w-12 text-red-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-v-5ed1d1d1><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" data-v-5ed1d1d1></path></svg><h3 class="text-lg font-medium text-gray-900 mb-2" data-v-5ed1d1d1>Error Loading People</h3><p class="text-gray-500 mb-4" data-v-5ed1d1d1>${ssrInterpolate(error.value)}</p><button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors" data-v-5ed1d1d1> Try Again </button></div>`);
+      } else if (people2.value.length > 0) {
+        _push(`<div class="space-y-8" data-v-5ed1d1d1><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6" data-v-5ed1d1d1><!--[-->`);
+        ssrRenderList(people2.value, (person) => {
+          _push(`<div class="group cursor-pointer" data-v-5ed1d1d1>`);
+          _push(ssrRenderComponent(_component_NuxtLink, {
+            to: `/person/${person.id}`,
+            class: "block"
+          }, {
+            default: withCtx((_, _push2, _parent2, _scopeId) => {
+              if (_push2) {
+                _push2(`<div class="relative aspect-square overflow-hidden rounded-full mb-3 bg-gray-200" data-v-5ed1d1d1${_scopeId}>`);
+                if (person.profile_path) {
+                  _push2(`<img${ssrRenderAttr("src", `https://image.tmdb.org/t/p/w500${person.profile_path}`)}${ssrRenderAttr("alt", person.name)} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" data-v-5ed1d1d1${_scopeId}>`);
+                } else {
+                  _push2(`<div class="w-full h-full bg-gray-300 flex items-center justify-center" data-v-5ed1d1d1${_scopeId}><svg class="w-12 h-12 text-gray-400" fill="currentColor" viewBox="0 0 20 20" data-v-5ed1d1d1${_scopeId}><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" data-v-5ed1d1d1${_scopeId}></path></svg></div>`);
+                }
+                _push2(`</div><div class="text-center" data-v-5ed1d1d1${_scopeId}><h3 class="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-1 line-clamp-2" data-v-5ed1d1d1${_scopeId}>${ssrInterpolate(person.name)}</h3>`);
+                if (person.known_for_department) {
+                  _push2(`<p class="text-sm text-gray-500 mb-2" data-v-5ed1d1d1${_scopeId}>${ssrInterpolate(person.known_for_department)}</p>`);
+                } else {
+                  _push2(`<!---->`);
+                }
+                if (person.known_for && person.known_for.length > 0) {
+                  _push2(`<div class="text-xs text-gray-400" data-v-5ed1d1d1${_scopeId}><span class="line-clamp-1" data-v-5ed1d1d1${_scopeId}> Known for: ${ssrInterpolate(person.known_for.map((item) => item.title || item.name).slice(0, 2).join(", "))}</span></div>`);
+                } else {
+                  _push2(`<!---->`);
+                }
+                _push2(`</div>`);
+              } else {
+                return [
+                  createVNode("div", { class: "relative aspect-square overflow-hidden rounded-full mb-3 bg-gray-200" }, [
+                    person.profile_path ? (openBlock(), createBlock("img", {
+                      key: 0,
+                      src: `https://image.tmdb.org/t/p/w500${person.profile_path}`,
+                      alt: person.name,
+                      class: "w-full h-full object-cover transition-transform duration-300 group-hover:scale-105",
+                      loading: "lazy"
+                    }, null, 8, ["src", "alt"])) : (openBlock(), createBlock("div", {
+                      key: 1,
+                      class: "w-full h-full bg-gray-300 flex items-center justify-center"
+                    }, [
+                      (openBlock(), createBlock("svg", {
+                        class: "w-12 h-12 text-gray-400",
+                        fill: "currentColor",
+                        viewBox: "0 0 20 20"
+                      }, [
+                        createVNode("path", {
+                          "fill-rule": "evenodd",
+                          d: "M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z",
+                          "clip-rule": "evenodd"
+                        })
+                      ]))
+                    ]))
+                  ]),
+                  createVNode("div", { class: "text-center" }, [
+                    createVNode("h3", { class: "font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-1 line-clamp-2" }, toDisplayString(person.name), 1),
+                    person.known_for_department ? (openBlock(), createBlock("p", {
+                      key: 0,
+                      class: "text-sm text-gray-500 mb-2"
+                    }, toDisplayString(person.known_for_department), 1)) : createCommentVNode("", true),
+                    person.known_for && person.known_for.length > 0 ? (openBlock(), createBlock("div", {
+                      key: 1,
+                      class: "text-xs text-gray-400"
+                    }, [
+                      createVNode("span", { class: "line-clamp-1" }, " Known for: " + toDisplayString(person.known_for.map((item) => item.title || item.name).slice(0, 2).join(", ")), 1)
+                    ])) : createCommentVNode("", true)
+                  ])
+                ];
+              }
+            }),
+            _: 2
+          }, _parent));
+          _push(`</div>`);
+        });
+        _push(`<!--]--></div>`);
+        if (hasMorePages.value) {
+          _push(`<div class="text-center" data-v-5ed1d1d1><button${ssrIncludeBooleanAttr(loading.value) ? " disabled" : ""} class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors" data-v-5ed1d1d1>`);
+          if (loading.value) {
+            _push(`<span data-v-5ed1d1d1>Loading...</span>`);
+          } else {
+            _push(`<span data-v-5ed1d1d1>Load More</span>`);
+          }
+          _push(`</button></div>`);
+        } else {
+          _push(`<!---->`);
+        }
+        _push(`<div class="text-center text-sm text-gray-500" data-v-5ed1d1d1> Showing ${ssrInterpolate(people2.value.length)} of ${ssrInterpolate(totalResults.value.toLocaleString())} people </div></div>`);
+      } else {
+        _push(`<div class="text-center py-12" data-v-5ed1d1d1><svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-v-5ed1d1d1><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" data-v-5ed1d1d1></path></svg><h3 class="text-lg font-medium text-gray-900 mb-2" data-v-5ed1d1d1>No People Found</h3><p class="text-gray-500 mb-4" data-v-5ed1d1d1>${ssrInterpolate(searchQuery.value ? "Try searching with different keywords." : "Unable to load popular people.")}</p>`);
+        if (searchQuery.value) {
+          _push(`<button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors" data-v-5ed1d1d1> View Popular People </button>`);
+        } else {
+          _push(`<!---->`);
+        }
+        _push(`</div>`);
+      }
+      _push(`</div>`);
+    };
+  }
+};
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("pages/people.vue");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+const people = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-5ed1d1d1"]]);
+
+export { people as default };
+//# sourceMappingURL=people-BUaOGsTD.mjs.map

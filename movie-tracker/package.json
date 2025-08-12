@@ -1,0 +1,28 @@
+{
+  "name": "movie-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "docker:dev": "docker-compose -f docker-compose.dev.yml up --build",
+    "docker:prod": "docker-compose -f docker-compose.prod.yml up --build",
+    "docker:build": "docker build -t movie-tracker .",
+    "docker:run": "docker run -p 3000:3000 --env-file .env movie-tracker",
+    "docker:stop": "docker-compose down",
+    "docker:clean": "docker system prune -a",
+    "clean": "rm -rf .nuxt .output node_modules",
+    "clean:docker": "docker-compose down --volumes --remove-orphans && docker system prune -af"
+  },
+  "dependencies": {
+    "@nuxtjs/tailwindcss": "^6.10.0",
+    "@pinia/nuxt": "^0.5.1",
+    "nuxt": "^4.0.0",
+    "pinia": "^2.1.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5"
+  }
+}

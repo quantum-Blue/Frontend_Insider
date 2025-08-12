@@ -1,0 +1,4 @@
+const peopleNew_vue_vue_type_style_index_0_scoped_5e87fcb6_lang = ".line-clamp-1[data-v-5e87fcb6]{-webkit-line-clamp:1}.line-clamp-1[data-v-5e87fcb6],.line-clamp-2[data-v-5e87fcb6]{display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}.line-clamp-2[data-v-5e87fcb6]{-webkit-line-clamp:2}";
+
+export { peopleNew_vue_vue_type_style_index_0_scoped_5e87fcb6_lang as p };
+//# sourceMappingURL=people-new-styles-1.mjs-36ngkpRD.mjs.map

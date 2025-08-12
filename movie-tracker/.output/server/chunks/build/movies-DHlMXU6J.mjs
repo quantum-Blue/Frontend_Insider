@@ -1,0 +1,132 @@
+import { _ as __nuxt_component_0 } from './nuxt-link-CE5i-Arg.mjs';
+import { _ as __nuxt_component_1 } from './PosterCard-DjNKAHYT.mjs';
+import { a as useRuntimeConfig, _ as __nuxt_component_2 } from './server.mjs';
+import { ref, mergeProps, withCtx, createTextVNode, toDisplayString, unref, createVNode, createBlock, openBlock, useSSRContext } from 'vue';
+import { ssrRenderAttrs, ssrRenderList, ssrRenderComponent, ssrInterpolate } from 'vue/server-renderer';
+import '../_/nitro.mjs';
+import 'node:http';
+import 'node:https';
+import 'node:events';
+import 'node:buffer';
+import 'node:fs';
+import 'node:path';
+import 'node:crypto';
+import 'node:url';
+import '../routes/renderer.mjs';
+import 'vue-bundle-renderer/runtime';
+import 'unhead/server';
+import 'devalue';
+import 'unhead/plugins';
+import 'unhead/utils';
+import './favorites-foySpqDT.mjs';
+import './_plugin-vue_export-helper-1tPrXgE0.mjs';
+import 'vue-router';
+
+const _sfc_main = {
+  __name: "movies",
+  __ssrInlineRender: true,
+  setup(__props) {
+    const categories = [
+      { label: "Popular", path: "/movies/popular" },
+      { label: "Now Playing", path: "/movies/now-playing" },
+      { label: "Upcoming", path: "/movies/upcoming" },
+      { label: "Top Rated", path: "/movies/top-rated" }
+    ];
+    const movies = ref([]);
+    const loading = ref(true);
+    const error = ref(null);
+    const totalResults = ref(0);
+    const config = useRuntimeConfig();
+    config.public.tmdbApiKey;
+    return (_ctx, _push, _parent, _attrs) => {
+      const _component_NuxtLink = __nuxt_component_0;
+      const _component_PosterCard = __nuxt_component_1;
+      const _component_NuxtPage = __nuxt_component_2;
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" }, _attrs))}><div class="text-center mb-8"><h1 class="text-4xl font-bold text-gray-900 mb-4">Movies</h1><p class="text-lg text-gray-600 max-w-2xl mx-auto"> Discover amazing movies across different categories. Choose from popular, top-rated, or upcoming releases. </p></div><div class="flex justify-center mb-8"><div class="bg-white rounded-lg shadow-sm border p-1"><!--[-->`);
+      ssrRenderList(categories, (category) => {
+        _push(ssrRenderComponent(_component_NuxtLink, {
+          key: category.path,
+          to: category.path,
+          class: [
+            "px-6 py-3 rounded-md text-sm font-medium transition-colors inline-block",
+            _ctx.$route.path === category.path ? "bg-blue-600 text-white shadow-md" : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
+          ]
+        }, {
+          default: withCtx((_, _push2, _parent2, _scopeId) => {
+            if (_push2) {
+              _push2(`${ssrInterpolate(category.label)}`);
+            } else {
+              return [
+                createTextVNode(toDisplayString(category.label), 1)
+              ];
+            }
+          }),
+          _: 2
+        }, _parent));
+      });
+      _push(`<!--]--></div></div>`);
+      if (_ctx.$route.path === "/movies") {
+        _push(`<div>`);
+        if (unref(loading)) {
+          _push(`<div class="text-center py-12"><div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div><p class="mt-4 text-gray-600">Loading movies...</p></div>`);
+        } else if (unref(error)) {
+          _push(`<div class="text-center py-12"><svg class="mx-auto h-12 w-12 text-red-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><h3 class="text-lg font-medium text-gray-900 mb-2">Error loading movies</h3><p class="text-gray-500 mb-4">${ssrInterpolate(unref(error))}</p><button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"> Try Again </button></div>`);
+        } else {
+          _push(`<div class="space-y-8"><div class="flex items-center justify-between"><h2 class="text-2xl font-bold text-gray-900">Popular Movies</h2>`);
+          _push(ssrRenderComponent(_component_NuxtLink, {
+            to: "/movies/popular",
+            class: "text-blue-600 hover:text-blue-700 font-medium text-sm flex items-center space-x-1"
+          }, {
+            default: withCtx((_, _push2, _parent2, _scopeId) => {
+              if (_push2) {
+                _push2(`<span${_scopeId}>View All</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"${_scopeId}><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"${_scopeId}></path></svg>`);
+              } else {
+                return [
+                  createVNode("span", null, "View All"),
+                  (openBlock(), createBlock("svg", {
+                    class: "w-4 h-4",
+                    fill: "none",
+                    stroke: "currentColor",
+                    viewBox: "0 0 24 24"
+                  }, [
+                    createVNode("path", {
+                      "stroke-linecap": "round",
+                      "stroke-linejoin": "round",
+                      "stroke-width": "2",
+                      d: "M9 5l7 7-7 7"
+                    })
+                  ]))
+                ];
+              }
+            }),
+            _: 1
+          }, _parent));
+          _push(`</div><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6"><!--[-->`);
+          ssrRenderList(unref(movies).slice(0, 18), (movie) => {
+            _push(ssrRenderComponent(_component_PosterCard, {
+              key: movie.id,
+              item: movie,
+              type: "movie"
+            }, null, _parent));
+          });
+          _push(`<!--]--></div><div class="text-center text-sm text-gray-500"> Showing ${ssrInterpolate(Math.min(18, unref(movies).length))} of ${ssrInterpolate(unref(totalResults))} movies </div></div>`);
+        }
+        _push(`</div>`);
+      } else {
+        _push(`<div>`);
+        _push(ssrRenderComponent(_component_NuxtPage, null, null, _parent));
+        _push(`</div>`);
+      }
+      _push(`</div>`);
+    };
+  }
+};
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("pages/movies.vue");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+
+export { _sfc_main as default };
+//# sourceMappingURL=movies-DHlMXU6J.mjs.map

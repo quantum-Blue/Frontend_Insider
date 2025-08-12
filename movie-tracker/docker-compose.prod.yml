@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  movie-tracker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - TMDB_API_KEY=${TMDB_API_KEY}
+        - NUXT_PUBLIC_TMDB_API_KEY=${TMDB_API_KEY}
+        - NUXT_PUBLIC_TMDB_BASE_URL=https://api.themoviedb.org/3
+        - NUXT_PUBLIC_TMDB_IMAGE_BASE_URL=https://image.tmdb.org/t/p
+    container_name: movie-tracker-prod
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - TMDB_API_KEY=${TMDB_API_KEY}
+      - NUXT_PUBLIC_TMDB_API_KEY=${TMDB_API_KEY}
+      - NUXT_PUBLIC_TMDB_BASE_URL=https://api.themoviedb.org/3
+      - NUXT_PUBLIC_TMDB_IMAGE_BASE_URL=https://image.tmdb.org/t/p
+    env_file:
+      - .env
+    restart: unless-stopped
+    networks:
+      - movie-tracker-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/api/health').then(r=>r.ok?process.exit(0):process.exit(1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
+
+  # Nginx reverse proxy for production (optional)
+  nginx:
+    image: nginx:alpine
+    container_name: movie-tracker-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - movie-tracker
+    networks:
+      - movie-tracker-network
+    restart: unless-stopped
+
+networks:
+  movie-tracker-network:
+    driver: bridge
+
+volumes:
+  movie-tracker-data:

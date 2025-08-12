@@ -1,0 +1,163 @@
+import { _ as __nuxt_component_0 } from './nuxt-link-CE5i-Arg.mjs';
+import { _ as __nuxt_component_1 } from './PosterCard-DjNKAHYT.mjs';
+import { ref, computed, mergeProps, withCtx, createBlock, createTextVNode, openBlock, createVNode, useSSRContext } from 'vue';
+import { ssrRenderAttrs, ssrRenderComponent, ssrInterpolate, ssrRenderClass, ssrRenderList } from 'vue/server-renderer';
+import { u as useFavoritesStore } from './favorites-foySpqDT.mjs';
+import { c as useSeoMeta } from './server.mjs';
+import '../_/nitro.mjs';
+import 'node:http';
+import 'node:https';
+import 'node:events';
+import 'node:buffer';
+import 'node:fs';
+import 'node:path';
+import 'node:crypto';
+import 'node:url';
+import '../routes/renderer.mjs';
+import 'vue-bundle-renderer/runtime';
+import 'unhead/server';
+import 'devalue';
+import 'unhead/plugins';
+import 'unhead/utils';
+import './_plugin-vue_export-helper-1tPrXgE0.mjs';
+import 'vue-router';
+
+const _sfc_main = {
+  __name: "favorites",
+  __ssrInlineRender: true,
+  setup(__props) {
+    useSeoMeta({
+      title: "My Favorites - Movie Tracker",
+      ogTitle: "My Favorites - Movie Tracker",
+      description: "View and manage your favorite movies and TV shows in one place.",
+      ogDescription: "View and manage your favorite movies and TV shows in one place."
+    });
+    const favoritesStore = useFavoritesStore();
+    const loading = ref(true);
+    const activeTab = ref("all");
+    const showClearConfirm = ref(false);
+    const showRemoveConfirm = ref(false);
+    const itemToRemove = ref(null);
+    const favoriteMovies = computed(() => favoritesStore.favoriteMovies);
+    const favoriteTvShows = computed(() => favoritesStore.favoriteTvShows);
+    const totalFavorites = computed(() => favoritesStore.favorites.length);
+    const filteredFavorites = computed(() => {
+      switch (activeTab.value) {
+        case "movies":
+          return favoriteMovies.value;
+        case "tv":
+          return favoriteTvShows.value;
+        default:
+          return favoritesStore.favorites;
+      }
+    });
+    return (_ctx, _push, _parent, _attrs) => {
+      const _component_NuxtLink = __nuxt_component_0;
+      const _component_PosterCard = __nuxt_component_1;
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "min-h-screen bg-gray-50" }, _attrs))}><div class="bg-gradient-to-r from-red-600 to-pink-600 py-16"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"><h1 class="text-4xl font-bold text-white sm:text-5xl mb-4"> My Favorites </h1><p class="mt-4 text-xl text-red-100 max-w-3xl mx-auto"> Your personally curated collection of favorite movies and TV shows </p></div></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">`);
+      if (loading.value) {
+        _push(`<div class="text-center py-12"><div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div><p class="mt-4 text-gray-600">Loading your favorites...</p></div>`);
+      } else if (totalFavorites.value === 0) {
+        _push(`<div class="text-center py-16"><svg class="mx-auto h-16 w-16 text-gray-400 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg><h3 class="text-2xl font-bold text-gray-900 mb-4">No favorites yet</h3><p class="text-gray-600 mb-8 max-w-md mx-auto"> Start exploring movies and TV shows to build your personal collection of favorites. </p><div class="space-x-4">`);
+        _push(ssrRenderComponent(_component_NuxtLink, {
+          to: "/movies",
+          class: "inline-flex items-center px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+        }, {
+          default: withCtx((_, _push2, _parent2, _scopeId) => {
+            if (_push2) {
+              _push2(`<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"${_scopeId}><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2h3a1 1 0 110 2h-1v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6H3a1 1 0 110-2h4z"${_scopeId}></path></svg> Browse Movies `);
+            } else {
+              return [
+                (openBlock(), createBlock("svg", {
+                  class: "w-5 h-5 mr-2",
+                  fill: "none",
+                  stroke: "currentColor",
+                  viewBox: "0 0 24 24"
+                }, [
+                  createVNode("path", {
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round",
+                    "stroke-width": "2",
+                    d: "M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2h3a1 1 0 110 2h-1v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6H3a1 1 0 110-2h4z"
+                  })
+                ])),
+                createTextVNode(" Browse Movies ")
+              ];
+            }
+          }),
+          _: 1
+        }, _parent));
+        _push(ssrRenderComponent(_component_NuxtLink, {
+          to: "/tv",
+          class: "inline-flex items-center px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+        }, {
+          default: withCtx((_, _push2, _parent2, _scopeId) => {
+            if (_push2) {
+              _push2(`<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"${_scopeId}><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"${_scopeId}></path></svg> Browse TV Shows `);
+            } else {
+              return [
+                (openBlock(), createBlock("svg", {
+                  class: "w-5 h-5 mr-2",
+                  fill: "none",
+                  stroke: "currentColor",
+                  viewBox: "0 0 24 24"
+                }, [
+                  createVNode("path", {
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round",
+                    "stroke-width": "2",
+                    d: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  })
+                ])),
+                createTextVNode(" Browse TV Shows ")
+              ];
+            }
+          }),
+          _: 1
+        }, _parent));
+        _push(`</div></div>`);
+      } else {
+        _push(`<div class="space-y-8"><div class="grid grid-cols-1 md:grid-cols-3 gap-6"><div class="bg-white rounded-lg shadow-sm p-6 text-center"><div class="text-3xl font-bold text-red-600 mb-2">${ssrInterpolate(totalFavorites.value)}</div><div class="text-gray-600">Total Favorites</div></div><div class="bg-white rounded-lg shadow-sm p-6 text-center"><div class="text-3xl font-bold text-blue-600 mb-2">${ssrInterpolate(favoriteMovies.value.length)}</div><div class="text-gray-600">Movies</div></div><div class="bg-white rounded-lg shadow-sm p-6 text-center"><div class="text-3xl font-bold text-green-600 mb-2">${ssrInterpolate(favoriteTvShows.value.length)}</div><div class="text-gray-600">TV Shows</div></div></div><div class="flex justify-center"><div class="bg-white rounded-lg shadow-sm p-1"><button class="${ssrRenderClass([
+          "px-6 py-3 rounded-md text-sm font-medium transition-colors",
+          activeTab.value === "all" ? "bg-red-600 text-white shadow" : "text-gray-600 hover:text-gray-800"
+        ])}"> All (${ssrInterpolate(totalFavorites.value)}) </button><button class="${ssrRenderClass([
+          "px-6 py-3 rounded-md text-sm font-medium transition-colors",
+          activeTab.value === "movies" ? "bg-red-600 text-white shadow" : "text-gray-600 hover:text-gray-800"
+        ])}"> Movies (${ssrInterpolate(favoriteMovies.value.length)}) </button><button class="${ssrRenderClass([
+          "px-6 py-3 rounded-md text-sm font-medium transition-colors",
+          activeTab.value === "tv" ? "bg-red-600 text-white shadow" : "text-gray-600 hover:text-gray-800"
+        ])}"> TV Shows (${ssrInterpolate(favoriteTvShows.value.length)}) </button></div></div><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6"><!--[-->`);
+        ssrRenderList(filteredFavorites.value, (item) => {
+          _push(`<div class="relative group"><div class="relative">`);
+          _push(ssrRenderComponent(_component_PosterCard, {
+            item,
+            type: item.type
+          }, null, _parent));
+          _push(`<button class="absolute top-2 right-2 p-2 bg-red-600 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 z-10" title="Remove from favorites"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button></div></div>`);
+        });
+        _push(`<!--]--></div><div class="text-center pt-8"><button class="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"> Clear All Favorites </button></div></div>`);
+      }
+      _push(`</div>`);
+      if (showRemoveConfirm.value) {
+        _push(`<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"><div class="bg-white rounded-lg max-w-md w-full p-6"><h3 class="text-lg font-semibold text-gray-900 mb-4"> Remove from Favorites </h3><p class="text-gray-600 mb-6"> Are you sure you want to remove &quot;${ssrInterpolate(itemToRemove.value?.title)}&quot; from your favorites? </p><div class="flex space-x-3"><button class="flex-1 px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors"> Cancel </button><button class="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"> Remove </button></div></div></div>`);
+      } else {
+        _push(`<!---->`);
+      }
+      if (showClearConfirm.value) {
+        _push(`<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"><div class="bg-white rounded-lg max-w-md w-full p-6"><h3 class="text-lg font-semibold text-gray-900 mb-4">Clear All Favorites</h3><p class="text-gray-600 mb-6"> Are you sure you want to remove all items from your favorites? This action cannot be undone. </p><div class="flex space-x-3"><button class="flex-1 px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors"> Cancel </button><button class="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"> Clear All </button></div></div></div>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`</div>`);
+    };
+  }
+};
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("pages/favorites.vue");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+
+export { _sfc_main as default };
+//# sourceMappingURL=favorites-IylTzSJT.mjs.map

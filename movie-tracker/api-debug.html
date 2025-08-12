@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TMDB API Debug</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .result { margin: 20px 0; padding: 10px; border: 1px solid #ccc; }
+        .error { background-color: #ffe6e6; }
+        .success { background-color: #e6ffe6; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>TMDB API Debug Tool</h1>
+    
+    <button onclick="testPopularMovies()">Test Popular Movies API</button>
+    <button onclick="testPopularTV()">Test Popular TV Shows API</button>
+    <button onclick="testSearch()">Test Search API</button>
+    <button onclick="testConfig()">Test Config</button>
+    
+    <div id="results"></div>
+
+    <script>
+        const API_KEY = '8265bd1679663a7ea12ac168da84d2e8';
+        const BASE_URL = 'https://api.themoviedb.org/3';
+        
+        function addResult(title, content, isError = false) {
+            const resultsDiv = document.getElementById('results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = 'result ' + (isError ? 'error' : 'success');
+            resultDiv.innerHTML = `<h3>${title}</h3><pre>${content}</pre>`;
+            resultsDiv.appendChild(resultDiv);
+        }
+        
+        async function testPopularMovies() {
+            try {
+                console.log('Testing popular movies...');
+                const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
+                const data = await response.json();
+                
+                if (response.ok) {
+                    addResult('Popular Movies - SUCCESS', 
+                        `Status: ${response.status}\\n` +
+                        `Movies found: ${data.results?.length || 0}\\n` +
+                        `First movie: ${data.results?.[0]?.title || 'N/A'}\\n` +
+                        `JSON: ${JSON.stringify(data, null, 2).substring(0, 500)}...`
+                    );
+                } else {
+                    addResult('Popular Movies - ERROR', 
+                        `Status: ${response.status}\\n` +
+                        `Error: ${JSON.stringify(data, null, 2)}`, true
+                    );
+                }
+            } catch (error) {
+                addResult('Popular Movies - NETWORK ERROR', error.message, true);
+            }
+        }
+        
+        async function testPopularTV() {
+            try {
+                console.log('Testing popular TV shows...');
+                const response = await fetch(`${BASE_URL}/tv/popular?api_key=${API_KEY}&language=en-US&page=1`);
+                const data = await response.json();
+                
+                if (response.ok) {
+                    addResult('Popular TV Shows - SUCCESS', 
+                        `Status: ${response.status}\\n` +
+                        `Shows found: ${data.results?.length || 0}\\n` +
+                        `First show: ${data.results?.[0]?.name || 'N/A'}\\n` +
+                        `JSON: ${JSON.stringify(data, null, 2).substring(0, 500)}...`
+                    );
+                } else {
+                    addResult('Popular TV Shows - ERROR', 
+                        `Status: ${response.status}\\n` +
+                        `Error: ${JSON.stringify(data, null, 2)}`, true
+                    );
+                }
+            } catch (error) {
+                addResult('Popular TV Shows - NETWORK ERROR', error.message, true);
+            }
+        }
+        
+        async function testSearch() {
+            try {
+                console.log('Testing search...');
+                const response = await fetch(`${BASE_URL}/search/multi?api_key=${API_KEY}&language=en-US&query=avengers&page=1`);
+                const data = await response.json();
+                
+                if (response.ok) {
+                    addResult('Search - SUCCESS', 
+                        `Status: ${response.status}\\n` +
+                        `Results found: ${data.results?.length || 0}\\n` +
+                        `First result: ${data.results?.[0]?.title || data.results?.[0]?.name || 'N/A'}\\n` +
+                        `JSON: ${JSON.stringify(data, null, 2).substring(0, 500)}...`
+                    );
+                } else {
+                    addResult('Search - ERROR', 
+                        `Status: ${response.status}\\n` +
+                        `Error: ${JSON.stringify(data, null, 2)}`, true
+                    );
+                }
+            } catch (error) {
+                addResult('Search - NETWORK ERROR', error.message, true);
+            }
+        }
+        
+        function testConfig() {
+            addResult('Configuration Test', 
+                `API Key: ${API_KEY}\\n` +
+                `Base URL: ${BASE_URL}\\n` +
+                `User Agent: ${navigator.userAgent}\\n` +
+                `Current URL: ${window.location.href}`
+            );
+        }
+        
+        // Auto-run config test
+        testConfig();
+    </script>
+</body>
+</html>
